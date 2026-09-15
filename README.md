@@ -1,16 +1,6 @@
 # ConceptsSelfStudy
 
-Personal self-study project on C++20 Concepts and Constraints, following a
-CppCon 2024 talk. Each numbered file is a small, self-contained demo of one
-idea, including the "why would this fail" cases - those are real code,
-guarded behind `SHOW_COMPILE_ERRORS` (see below) rather than left as comments,
-so you can actually see the compiler's own diagnostic instead of a paraphrase.
-
-A few of those error blocks were themselves wrong on the first pass (e.g. a
-`T&&` that turned an intended redefinition error into a different, subtler
-bug) - caught and fixed by actually compiling them with `make errors` rather
-than trusting the comment. Leaving that debugging trail visible is part of
-the point of a self-study repo.
+Self-study project on C++ Concepts and Constraints, following CppCon 2024. Each numbered file is a small demo of presentation page. Code includes compile errors guarded behind `SHOW_COMPILE_ERRORS`.
 
 ## Topics
 
@@ -49,28 +39,12 @@ make run    # builds and runs it
 make clean
 ```
 
-CI (`.github/workflows/build.yml`) builds and runs the project on every push
-using the same `Makefile`.
+CI (`.github/workflows/build.yml`) builds and runs the project on every push using the same `Makefile`.
 
 ## Seeing the compile errors
-
-Blocks marked `COMPILE ERROR` in the source are real code, wrapped in
-`#ifdef SHOW_COMPILE_ERRORS`, so they're excluded from a normal build. To see
-the actual compiler diagnostic for all of them:
 
 ```bash
 make errors
 ```
 
-This is expected to fail - that's the point. It compiles each file
-separately with `-DSHOW_COMPILE_ERRORS -fsyntax-only`, so you get every
-file's real error without needing a full/linked build.
-
-Note: within a single file, defining the flag turns on *every* guarded block
-in that file (and its header) at once. A couple of files have more than one
-guarded block, and in two spots (`01_Introduction`, `03_Autos`) enabling one
-block changes which overload gets picked for another call in the same file -
-so the specific error you see may not always be the one the nearest comment
-describes, though it's always a genuine error from the same underlying
-mistake. Comment out the block(s) you're not interested in, or compile with
-a per-file flag, to isolate one at a time.
+This is expected to FAIL. It compiles each file separately with `-DSHOW_COMPILE_ERRORS -fsyntax-only`, so all errors are visible.
