@@ -1,0 +1,20 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show compiler version
+        run: g++ --version
+
+      - name: Build
+        run: make
+
+      - name: Run
+        run: ./bin/wsl/ConceptsSelfStudy

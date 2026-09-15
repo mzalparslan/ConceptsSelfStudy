@@ -1,0 +1,19 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.user
+*.sdf
+*.opensdf
+*.suo
+ipch/
+*.ilk
+*.pdb
+*.obj
+*.exe
+
+# Misc
+*.log
