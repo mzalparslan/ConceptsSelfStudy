@@ -169,6 +169,11 @@
     <ClCompile Include="src\cpp\08_Conditional.cpp" />
     <ClCompile Include="src\cpp\01_Introduction.cpp" />
     <ClCompile Include="src\cpp\02_InvalidConcept.cpp" />
+    <ClCompile Include="src\cpp\09_Ambiguties.cpp" />
+    <ClCompile Include="src\cpp\10_Subsumption.cpp" />
+    <ClCompile Include="src\cpp\11_SubsumeNotAutomatic.cpp" />
+    <ClCompile Include="src\cpp\12_ConstraintsForMembers.cpp" />
+    <ClCompile Include="src\cpp\13_ConstraintsForNonTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\03_Autos.h" />
@@ -179,6 +184,11 @@
     <ClInclude Include="src\include\08_Conditional.h" />
     <ClInclude Include="src\include\01_Introduction.h" />
     <ClInclude Include="src\include\02_InvalidConcept.h" />
+    <ClInclude Include="src\include\09_Ambiguties.h" />
+    <ClInclude Include="src\include\10_Subsumption.h" />
+    <ClInclude Include="src\include\11_SubsumeNotAutomatic.h" />
+    <ClInclude Include="src\include\12_ConstraintsForMembers.h" />
+    <ClInclude Include="src\include\13_ConstraintsForNonTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

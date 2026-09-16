@@ -14,6 +14,11 @@ Self-study project on C++ Concepts and Constraints, following CppCon 2024. Each 
 | 06 | `MultipleRequirements` | Combining several requirements (and standard concepts) into one |
 | 07 | `RequiresRequires` | The `requires requires { ... }` ad-hoc constraint form |
 | 08 | `Conditional` | `if constexpr` with a `requires` expression, and constraining `auto` params directly |
+| 09 | `Ambiguties` | Two concepts with no ordering relation between them cause an ambiguous overload |
+| 10 | `Subsumption` | Why logically-equivalent concepts aren't necessarily subsumption-equivalent to the compiler; `&&` vs `\|\|` |
+| 11 | `SubsumeNotAutomatic` | A concept doesn't automatically subsume another just because it implies it - it has to be composed from it |
+| 12 | `ConstraintsForMembers` | Constraining individual member functions of a class template with `requires` |
+| 13 | `ConstraintsForNonTypes` | Constraining non-type template parameters (`template <auto Value> requires ...`) |
 
 `src/ConceptsSelfStudy.cpp` just calls each topic's test functions in order.
 

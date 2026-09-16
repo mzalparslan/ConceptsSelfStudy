@@ -7,6 +7,15 @@
 #include "06_MultipleRequirements.h"
 #include "07_RequiresRequires.h"
 #include "08_Conditional.h"
+#include "09_Ambiguties.h"
+#include "10_Subsumption.h"
+#include "11_SubsumeNotAutomatic.h"
+#include "12_ConstraintsForMembers.h"
+#include "13_ConstraintsForNonTypes.h"
+#include "TestCounter.h"
+
+// Counter for tests.
+int testCount = 1;
 
 int main()
 {
@@ -34,6 +43,26 @@ int main()
 	testAddConditionalWithErrors();
 	testAddConditionalTypeChecking();
 	testAddConditionalTypeCheckingParam();
+
+	// --- Ambiguties ---
+	testAmbiguties();
+	testAmbigutiesAfterFix();
+	// -- Concept Subsumption ---
+	testConceptSubsumption();
+	testConceptSubsumptionAndOrOr();
+	
+	// --- Subsume Not Automatic ---
+	testSubsumeForCowboy();
+	testGeoObjectAndCowboyTogether();
+
+	// --- Constraints for Members ---
+	testMemberWithNoConstraint();
+	testConstraintsForMemberZero();
+	testConstraintsForMemberEmpty();
+
+	// --- Constraints for Non-Type Templates ---
+	testConstraintsForNonTypes();
+	testConceptsWithNonTypeParams();
 
     return 0;
 }

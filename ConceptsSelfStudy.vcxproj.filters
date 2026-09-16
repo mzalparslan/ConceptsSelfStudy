@@ -45,6 +45,21 @@
     <ClCompile Include="src\cpp\08_Conditional.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\cpp\09_Ambiguties.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\10_Subsumption.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\11_SubsumeNotAutomatic.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\12_ConstraintsForMembers.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\13_ConstraintsForNonTypes.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\01_Introduction.h">
@@ -69,6 +84,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\include\08_Conditional.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\09_Ambiguties.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\10_Subsumption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\11_SubsumeNotAutomatic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\12_ConstraintsForMembers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\13_ConstraintsForNonTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

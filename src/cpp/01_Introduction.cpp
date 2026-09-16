@@ -1,14 +1,23 @@
 
 #include "01_Introduction.h"
+#include "TestCounter.h"
 #include <iostream>
 #include <vector>
 #include <set>
 #include <string>
 
+// Test methods.
+static_assert(HasPushBack<std::vector<int>>);
+static_assert(!HasPushBack<std::set<int>>);
+
 void testAdd() {
+	std::cout << testCount++ << "# " << "Testing add:\n";
+		
 	std::vector<int> vec;
 	add(vec, 42);
 	add(vec, 7);
+
+	std::cout << " - Vector contents: ";
 	for (const auto& val : vec) {
 		std::cout << val << " ";
 	}
@@ -33,10 +42,13 @@ void testAdd() {
 
 // Test function for addWithConcept will compile and run.
 void testAddWithConcept() {
+	std::cout << testCount++ << "# " << "Testing add with concept:\n";
+
 	std::vector<int> vec;
 	addWithConcept(vec, 42);
 	addWithConcept(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& val : vec) {
 		std::cout << val << " ";
 	}
@@ -45,7 +57,8 @@ void testAddWithConcept() {
 	std::set<int> mySet;
 	addWithConcept(mySet, 42);
 	addWithConcept(mySet, 7);
-	std::cout << "Set contents: ";
+
+	std::cout << " - Set contents: ";
 	for (const auto& val : mySet) {
 		std::cout << val << " ";
 	}
@@ -53,10 +66,13 @@ void testAddWithConcept() {
 }
 
 void testAddWithShortConcept() {
+	std::cout << testCount++ << "# " << "Testing add with short concept:\n";
+
 	std::vector<int> vec;
 	addWithShortConcept(vec, 42);
 	addWithShortConcept(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& val : vec) {
 		std::cout << val << " ";
 	}
@@ -65,7 +81,8 @@ void testAddWithShortConcept() {
 	std::set<int> mySet;
 	addWithShortConcept(mySet, 42);
 	addWithShortConcept(mySet, 7);
-	std::cout << "Set contents: ";
+
+	std::cout << " - Set contents: ";
 	for (const auto& val : mySet) {
 		std::cout << val << " ";
 	}

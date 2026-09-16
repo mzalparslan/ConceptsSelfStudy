@@ -1,18 +1,33 @@
 
-#include "08_Conditional.h"	
+#include "08_Conditional.h"
+#include "TestCounter.h"
 #include <vector>
 #include <set>
 #include <string>
 #include <iostream>
 
+// Same check as the ad-hoc requires-expression inside addConditionalConcepts,
+// wrapped in a tiny concept so the negative case can SFINAE to false instead
+// of hard-erroring (see 07_RequiresRequires.cpp for why the bare form fails).
+template <typename CollT>
+concept CanCallPushBack = requires (CollT coll, int x) { coll.push_back(x); };
+
+static_assert(CanCallPushBack<std::vector<int>>);
+static_assert(!CanCallPushBack<std::set<std::string>>);
+
+// Same convertible_to constraint used by addConditionalTypeChecking/Param.
+static_assert(std::convertible_to<int, std::ranges::range_value_t<std::vector<int>>>);
+static_assert(!std::convertible_to<int, std::ranges::range_value_t<std::set<std::string>>>);
+
 void testAddConditionalConcepts() {
-	std::cout << 
-		"Testing compile-time if conditional concepts:\n";
+	std::cout << testCount++ << "# " << "Testing compile-time if conditional "
+		"concepts:\n";
 
 	std::vector<int> vec;
 	addConditionalConcepts(vec, 42);
 	addConditionalConcepts(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& value : vec) {
 		std::cout << value << " ";
 	}
@@ -21,7 +36,8 @@ void testAddConditionalConcepts() {
 	std::set<int> iSet;
 	addConditionalConcepts(iSet, 42);
 	addConditionalConcepts(iSet, 7);
-	std::cout << "Set contents: ";
+
+	std::cout << " - Set contents: ";
 	for (const auto& value : iSet) {
 		std::cout << value << " ";
 	}
@@ -29,13 +45,14 @@ void testAddConditionalConcepts() {
 }
 
 void testAddConditionalWithErrors() {
-	std::cout <<
-		"Testing compile-time if conditional concepts with error:\n";
+	std::cout << testCount++ << "# " << "Testing compile-time if conditional concepts "
+		"with error:\n";
 
 	std::vector<int> vec;
 	addConditionalConcepts(vec, 42);
 	addConditionalConcepts(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& value : vec) {
 		std::cout << value << " ";
 	}
@@ -48,7 +65,8 @@ void testAddConditionalWithErrors() {
 	std::set<std::string> iSet;
 	addConditionalConcepts(iSet, 42);
 	addConditionalConcepts(iSet, 7);
-	std::cout << "Set contents: ";
+
+	std::cout << " - Set contents: ";
 	for (const auto& value : iSet) {
 		std::cout << value << " ";
 	}
@@ -57,13 +75,14 @@ void testAddConditionalWithErrors() {
 }
 
 void testAddConditionalTypeChecking() {
-	std::cout <<
-		"Testing compile-time if conditional concepts with type checking:\n";
+	std::cout << testCount++ << "# " << "Testing compile-time if condition with "
+		"type checking:\n";
 
 	std::vector<int> vec;
 	addConditionalTypeChecking(vec, 42);
 	addConditionalTypeChecking(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& value : vec) {
 		std::cout << value << " ";
 	}
@@ -76,7 +95,8 @@ void testAddConditionalTypeChecking() {
 	std::set<std::string> iSet;
 	addConditionalTypeChecking(iSet, 42);
 	addConditionalTypeChecking(iSet, 7);
-	std::cout << "Set contents: ";
+
+	std::cout << " - Set contents: ";
 	for (const auto& value : iSet) {
 		std::cout << value << " ";
 	}
@@ -85,14 +105,14 @@ void testAddConditionalTypeChecking() {
 }
 
 void testAddConditionalTypeCheckingParam() {
-	std::cout <<
-		"Testing compile-time if conditional concepts with type checking "
-		"for template parameter:\n";
+	std::cout << testCount++ << "# " << "Testing compile-time if conditional concepts "
+		"with type checking for template parameter:\n";
 
 	std::vector<int> vec;
 	addConditionalTypeCheckingParam(vec, 42);
 	addConditionalTypeCheckingParam(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& value : vec) {
 		std::cout << value << " ";
 	}
@@ -105,7 +125,8 @@ void testAddConditionalTypeCheckingParam() {
 	std::set<std::string> iSet;
 	addConditionalTypeCheckingParam(iSet, 42);
 	addConditionalTypeCheckingParam(iSet, 7);
-	std::cout << "Set contents: ";
+
+	std::cout << " - Set contents: ";
 	for (const auto& value : iSet) {
 		std::cout << value << " ";
 	}

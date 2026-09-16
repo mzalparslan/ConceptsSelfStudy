@@ -1,20 +1,21 @@
 
 #include "02_InvalidConcept.h"
+#include "TestCounter.h"
 #include <iostream>
 #include <vector>
 #include <set>
 
-/**
-* Test Code: will not compile because push_back method is misspelled.
-* This is actually test code for the concepts. 
-* Compiler will show error for 2nd function but original error is at 1st function.
-static_assert(MispelledPushBack<std::vector<int>>,
-	"std::vector<int> should satisfy MispelledPushBack concept");
-*/
+// Neither container satisfies this concept - it looks for a "pushback"
+// member (no underscore), which no standard container has. That's the
+// whole point: the concept itself is broken, not any particular type.
+static_assert(!MispelledPushBack<std::vector<int>>,
+	"std::vector<int> has push_back, not pushback");
 static_assert(!MispelledPushBack<std::set<int>>,
 	"std::set<int> should not satisfy MispelledPushBack concept");
 
 void testAddWithMisspelledConcept() {
+	std::cout << testCount++ << "# " << "Testing mispelled concept:\n";
+
 #ifdef SHOW_COMPILE_ERRORS
 	// COMPILE ERROR:
 	// Compiler will check the 1st (MispelledPushBack-constrained) overload
@@ -25,7 +26,8 @@ void testAddWithMisspelledConcept() {
 	std::vector<int> vec;
 	addWithMisspelledConcept(vec, 42);
 	addWithMisspelledConcept(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& val : vec) {
 		std::cout << val << " ";
 	}
@@ -37,7 +39,8 @@ void testAddWithMisspelledConcept() {
 	std::set<int> mySet;
 	addWithMisspelledConcept(mySet, 42);
 	addWithMisspelledConcept(mySet, 7);
-	std::cout << "Set contents: ";
+	
+	std::cout << " - Set contents: ";
 	for (const auto& val : mySet) {
 		std::cout << val << " ";
 	}

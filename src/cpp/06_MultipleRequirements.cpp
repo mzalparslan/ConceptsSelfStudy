@@ -1,5 +1,6 @@
 
 #include "06_MultipleRequirements.h"	
+#include "TestCounter.h"
 #include <vector>
 #include <set>
 #include <iostream>
@@ -42,13 +43,13 @@ static_assert(SequenceCont<std::vector<WithLess>&>);
 static_assert(!SequenceCont<std::vector<WithoutLess>&>);
 
 void testAddConceptsOfMultipleReqs() {
-	std::cout <<
-		"Testing Concepts with Multiple Requirements:\n";
+	std::cout << testCount++ << "# " << "Testing concepts with multiple requirements:\n";
 
 	std::vector<int> vec;
 	addConceptsOfMultipleReqs(vec, 42);
 	addConceptsOfMultipleReqs(vec, 7);
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& val : vec) {
 		std::cout << val << " ";
 	}
@@ -56,13 +57,13 @@ void testAddConceptsOfMultipleReqs() {
 }
 
 void testAddForLessThanComparisionRequirement() {
-	std::cout << "Testing Concepts if Comparision (<) "
-		"less than requirement:\n";
+	std::cout << testCount++ << "# " << "Testing concepts with comparision:\n";
 
 	std::vector<WithLess> vec;
 	addConceptsOfMultipleReqs(vec, WithLess(42));
 	addConceptsOfMultipleReqs(vec, WithLess(7));
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& item : vec) {
 		std::cout << item.getValue() << " ";
 	}
@@ -74,7 +75,8 @@ void testAddForLessThanComparisionRequirement() {
 	std::vector<WithoutLess> errVec;
 	addConceptsOfMultipleReqs(errVec, WithoutLess(42));
 	addConceptsOfMultipleReqs(errVec, WithoutLess(7));
-	std::cout << "Vector contents: ";
+
+	std::cout << " - Vector contents: ";
 	for (const auto& item : errVec) {
 		std::cout << item.getValue() << " ";
 	}
